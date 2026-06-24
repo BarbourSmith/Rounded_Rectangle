@@ -1,13 +1,108 @@
 {
-    "atomType": "Molecule",
-    "x": 0,
-    "y": 0,
-    "uniqueID": "id-460774",
-    "name": "Rounded_Rectangle",
-    "topLevel": true,
-    "allAtoms": [],
-    "allConnectors": [],
-    "unitsKey": "Unitless",
-    "fileTypeVersion": 1,
-    "filetypeVersion": 1
+  "atomType": "Molecule",
+  "x": 0,
+  "y": 0,
+  "uniqueID": "id-460774",
+  "name": "Rounded_Rectangle",
+  "ioValues": [
+    {
+      "name": "X_Length",
+      "ioValue": 20,
+      "currentEquation": "20"
+    },
+    {
+      "name": "Y_Length",
+      "ioValue": 5,
+      "currentEquation": "5"
+    },
+    {
+      "name": "Radius",
+      "ioValue": 2,
+      "currentEquation": "2"
+    }
+  ],
+  "topLevel": true,
+  "allAtoms": [
+    {
+      "atomType": "Output",
+      "x": 0.98,
+      "y": 0.5,
+      "uniqueID": "id-460775",
+      "ioValues": [
+        {
+          "name": "number or geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ]
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.4317548746518106,
+      "uniqueID": "id-460781",
+      "name": "X_Length"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.6406685236768802,
+      "uniqueID": "id-460784",
+      "name": "Y_Length"
+    },
+    {
+      "atomType": "Input",
+      "x": 0.025384615384615384,
+      "y": 0.8022284122562675,
+      "uniqueID": "id-460787",
+      "name": "Radius"
+    },
+    {
+      "atomType": "Code",
+      "x": 0.49603174603174605,
+      "y": 0.637883008356546,
+      "uniqueID": "id-460790",
+      "ioValues": [
+        {
+          "name": "width",
+          "ioValue": 20
+        },
+        {
+          "name": "height",
+          "ioValue": 5
+        },
+        {
+          "name": "cornerRadius",
+          "ioValue": 2
+        }
+      ],
+      "interpreterVersion": 1,
+      "code": "function run(\n  width: number = 40,\n  height: number = 30,\n  cornerRadius: number = 5,\n): Assembly {\n  // Create a 2D rounded rectangle sketch\n  const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n\n  return new Assembly({\n    geometry: roundedRect,\n    tags: [\"rounded-rectangle\", \"2d\"],\n    bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n  });\n}",
+      "compiledCode": "\"use strict\";\nfunction run(width = 40, height = 30, cornerRadius = 5) {\n    // Create a 2D rounded rectangle sketch\n    const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n    return new Assembly({\n        geometry: roundedRect,\n        tags: [\"rounded-rectangle\", \"2d\"],\n        bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n    });\n}\n"
+    }
+  ],
+  "allConnectors": [
+    {
+      "ap2Name": "width",
+      "ap1ID": "id-460781",
+      "ap2ID": "id-460790"
+    },
+    {
+      "ap2Name": "height",
+      "ap1ID": "id-460784",
+      "ap2ID": "id-460790"
+    },
+    {
+      "ap2Name": "cornerRadius",
+      "ap1ID": "id-460787",
+      "ap2ID": "id-460790"
+    },
+    {
+      "ap2Name": "number or geometry",
+      "ap1ID": "id-460790",
+      "ap2ID": "id-460775"
+    }
+  ],
+  "unitsKey": "Unitless",
+  "fileTypeVersion": 1,
+  "filetypeVersion": 1
 }
