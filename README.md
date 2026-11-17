@@ -2,7 +2,7 @@
 
 # Rounded_Rectangle
 
-![](/project.svg)
+![](/project.png)
 
 ## Inputs
 
